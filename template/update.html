@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+
+    <h1>Update User</h1>
+
+<form action="" method="post">
+<!--<form action="form/update/{{ contact.id }}" method="post">a-->
+
+
+{% csrf_token %}
+Name:<br>
+<input name="name" value="{{ contact.name }}">
+<br><br>
+Email:<br>
+<input name="email" value="{{ contact.email }}">
+<br><br>
+Contact:<br>
+<input name="phone_number" value="{{ contact.phone_number}}">
+<br><br>
+Message:<br>
+<input name="message" value="{{ contact.message }}">
+<br><br>
+<input type="submit" value="Submit">
+</form>
+    
+</body>
+</html>

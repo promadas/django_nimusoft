@@ -1,0 +1,88 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'Templates/userform.css' %}">
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container contact-form">
+            <div class="contact-image">
+                <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact"/>
+            </div>
+            
+            <form method="post" action="">
+                
+                  {% csrf_token %}
+                
+                <h3>Drop Us a Message</h3>
+              
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email *" value="" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="phone_number" class="form-control" placeholder="Your Phone Number *" value="" />
+                        </div>
+                       
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <textarea name="message" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-sm btn-success" value="Send Message" />
+                    </div>
+                
+                
+                </div>
+            </form>
+
+
+
+</div>
+{% block content %} 
+  
+
+       <h3> Database </h3>
+
+       <table border='1'>
+        <tr>
+          <th>Name</th>
+          <th>Email Address</th>
+          <th>phone_number</th>
+          <th>Message</th>
+          <th>Actions</th>
+          <th>Actions</th>
+        </tr>
+        
+        {% for x in contact %}
+          
+        <tr>
+            
+            <td>{{ x.name }}</td>
+            <td>{{ x.email }}</td>
+            <td>{{ x.phone_number }}</td>
+            <td>{{ x.message }}</td>
+            
+            <td><a href="update/{{ x.id}}">Update</a></td>
+            
+            <td><a href="delete/{{x.id}}">Delete</a></td>
+          
+        </tr>
+        {% endfor %}
+      </table>
+
+
+
+{% endblock content %}
+
+
